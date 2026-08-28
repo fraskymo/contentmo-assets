@@ -1,0 +1,882 @@
+<!--
+  ContentMo Author Home redesign
+  Paste this entire file into a Squarespace Code Block.
+  All styling is scoped to #cm-author-home so it will not affect other pages.
+-->
+
+<style>
+  #cm-author-home {
+    --cm-green: #20a95b;
+    --cm-green-dark: #11733c;
+    --cm-green-soft: #eaf8f0;
+    --cm-ink: #202823;
+    --cm-muted: #5c6961;
+    --cm-line: #dce6df;
+    --cm-paper: #ffffff;
+    --cm-warm: #f7f5ef;
+    --cm-charcoal: #202521;
+    --cm-gold-soft: #fff4cf;
+    --cm-gold: #a66a00;
+    color: var(--cm-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    left: 50%;
+    margin: 0;
+    max-width: 1420px;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1420px, calc(100vw - 40px));
+  }
+
+  #cm-author-home,
+  #cm-author-home * {
+    box-sizing: border-box;
+  }
+
+  #cm-author-home a {
+    color: inherit;
+  }
+
+  #cm-author-home h1,
+  #cm-author-home h2,
+  #cm-author-home h3,
+  #cm-author-home p {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #cm-author-home .cm-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 88% 14%, rgba(255, 255, 255, 0.76) 0 14%, transparent 15%),
+      linear-gradient(135deg, #edf9f1 0%, #f8f6ef 58%, #eef8f2 100%);
+    border: 1px solid var(--cm-line);
+    border-radius: 26px;
+    display: grid;
+    gap: 34px;
+    grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.75fr);
+    overflow: hidden;
+    padding: clamp(32px, 4.5vw, 54px);
+  }
+
+  #cm-author-home .cm-eyebrow {
+    color: var(--cm-green-dark);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+
+  #cm-author-home h1 {
+    color: var(--cm-ink);
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.99;
+    margin: 0;
+    max-width: 790px;
+    text-transform: none;
+  }
+
+  #cm-author-home .cm-hero-copy {
+    color: var(--cm-muted);
+    font-size: clamp(1.04rem, 2vw, 1.24rem);
+    margin: 18px 0 0;
+    max-width: 760px;
+  }
+
+  #cm-author-home .cm-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  #cm-author-home .cm-button {
+    align-items: center;
+    border: 2px solid var(--cm-green-dark);
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 0.96rem;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 50px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+
+  #cm-author-home .cm-button-primary {
+    background: var(--cm-green-dark);
+    color: #ffffff;
+  }
+
+  #cm-author-home .cm-button-secondary {
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--cm-green-dark);
+  }
+
+  #cm-author-home .cm-button:hover {
+    transform: translateY(-2px);
+  }
+
+  #cm-author-home .cm-button-primary:hover {
+    background: #0c5f31;
+    border-color: #0c5f31;
+  }
+
+  #cm-author-home .cm-button-secondary:hover {
+    background: #ffffff;
+  }
+
+  #cm-author-home a:focus-visible {
+    outline: 3px solid #f4b942;
+    outline-offset: 4px;
+  }
+
+  #cm-author-home .cm-hero-brand {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 220px;
+  }
+
+  #cm-author-home .cm-logo-wrap {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--cm-line);
+    border-radius: 50%;
+    box-shadow: 0 18px 45px rgba(29, 67, 43, 0.13);
+    display: flex;
+    height: 178px;
+    justify-content: center;
+    width: 178px;
+  }
+
+  #cm-author-home .cm-logo-wrap img {
+    display: block;
+    height: 132px;
+    object-fit: contain;
+    width: 132px;
+  }
+
+  #cm-author-home .cm-since {
+    background: var(--cm-charcoal);
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.055em;
+    margin: -15px 0 0;
+    padding: 9px 16px;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  #cm-author-home .cm-trust-bar {
+    background: var(--cm-charcoal);
+    border-radius: 0 0 20px 20px;
+    color: #ffffff;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0 22px;
+    overflow: hidden;
+  }
+
+  #cm-author-home .cm-trust-item {
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    display: flex;
+    font-size: 0.86rem;
+    font-weight: 700;
+    justify-content: center;
+    min-height: 56px;
+    padding: 11px 14px;
+    text-align: center;
+  }
+
+  #cm-author-home .cm-trust-item:last-child {
+    border-right: 0;
+  }
+
+  #cm-author-home .cm-section {
+    padding: clamp(42px, 5vw, 62px) clamp(4px, 1vw, 12px) 0;
+    scroll-margin-top: 24px;
+  }
+
+  #cm-author-home .cm-section-heading {
+    margin: 0 auto 24px;
+    max-width: 760px;
+    text-align: center;
+  }
+
+  #cm-author-home .cm-section-heading h2 {
+    color: var(--cm-ink);
+    font-size: clamp(1.78rem, 3.4vw, 2.58rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-author-home .cm-section-heading p {
+    color: var(--cm-muted);
+    font-size: 1.02rem;
+    margin: 12px auto 0;
+    max-width: 680px;
+  }
+
+  #cm-author-home .cm-goal-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #cm-author-home .cm-goal {
+    background: var(--cm-warm);
+    border: 1px solid #e7e1d4;
+    border-radius: 16px;
+    min-height: 112px;
+    padding: 18px;
+    text-decoration: none;
+    transition: border-color 160ms ease, transform 160ms ease;
+  }
+
+  #cm-author-home .cm-goal:hover {
+    border-color: #a7cdb5;
+    transform: translateY(-3px);
+  }
+
+  #cm-author-home .cm-goal strong {
+    display: block;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  #cm-author-home .cm-goal span {
+    color: var(--cm-muted);
+    font-size: 0.9rem;
+  }
+
+  #cm-author-home .cm-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #cm-author-home .cm-featured-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #cm-author-home #cm-social-promos .cm-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #cm-author-home .cm-card {
+    background: var(--cm-paper);
+    border: 1px solid var(--cm-line);
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(28, 59, 39, 0.07);
+    display: flex;
+    flex-direction: column;
+    min-height: 252px;
+    padding: 20px;
+    text-decoration: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  #cm-author-home .cm-card:hover {
+    border-color: #9bc8ac;
+    box-shadow: 0 14px 34px rgba(28, 59, 39, 0.12);
+    transform: translateY(-4px);
+  }
+
+  #cm-author-home .cm-card-featured {
+    border-top: 5px solid var(--cm-green-dark);
+  }
+
+  #cm-author-home .cm-card-top {
+    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  #cm-author-home .cm-price {
+    background: var(--cm-green-soft);
+    border: 1px solid #ccebd8;
+    border-radius: 999px;
+    color: var(--cm-green-dark);
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.025em;
+    line-height: 1;
+    padding: 9px 11px;
+    white-space: nowrap;
+  }
+
+  #cm-author-home .cm-label {
+    color: var(--cm-gold);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    padding-top: 7px;
+    text-transform: uppercase;
+  }
+
+  #cm-author-home .cm-card h3 {
+    color: var(--cm-ink);
+    font-size: 1.18rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.18;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-author-home .cm-card p {
+    color: var(--cm-muted);
+    font-size: 0.94rem;
+    margin: 9px 0 12px;
+  }
+
+  #cm-author-home .cm-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 16px;
+  }
+
+  #cm-author-home .cm-tag {
+    background: #f2f5f3;
+    border-radius: 999px;
+    color: #47544c;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 5px 8px;
+  }
+
+  #cm-author-home .cm-card-link {
+    color: var(--cm-green-dark);
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-top: auto;
+  }
+
+  #cm-author-home .cm-card-link span {
+    display: inline-block;
+    margin-left: 4px;
+    transition: transform 160ms ease;
+  }
+
+  #cm-author-home .cm-card:hover .cm-card-link span {
+    transform: translateX(4px);
+  }
+
+  #cm-author-home .cm-category {
+    background: var(--cm-warm);
+    border: 1px solid #e9e4d8;
+    border-radius: 24px;
+    padding: clamp(24px, 3.2vw, 38px);
+  }
+
+  #cm-author-home .cm-category + .cm-category {
+    margin-top: 20px;
+  }
+
+  #cm-author-home .cm-category-header {
+    margin-bottom: 20px;
+    max-width: 760px;
+  }
+
+  #cm-author-home .cm-category-header h2 {
+    color: var(--cm-ink);
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-author-home .cm-category-header p {
+    color: var(--cm-muted);
+    margin: 8px 0 0;
+  }
+
+  #cm-author-home .cm-category .cm-card {
+    box-shadow: none;
+  }
+
+  #cm-author-home .cm-quote {
+    background: var(--cm-charcoal);
+    border-radius: 24px;
+    color: #ffffff;
+    padding: clamp(30px, 4vw, 48px);
+    position: relative;
+  }
+
+  #cm-author-home .cm-quote-mark {
+    color: #75d69d;
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    line-height: 0.6;
+    margin-bottom: 16px;
+  }
+
+  #cm-author-home .cm-quote blockquote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.22rem, 2.6vw, 1.75rem);
+    line-height: 1.45;
+    margin: 0;
+    max-width: 930px;
+  }
+
+  #cm-author-home .cm-quote cite {
+    color: #cfe5d7;
+    display: block;
+    font-size: 0.94rem;
+    font-style: normal;
+    font-weight: 800;
+    margin-top: 16px;
+  }
+
+  #cm-author-home .cm-final {
+    align-items: center;
+    background: var(--cm-green-soft);
+    border: 1px solid #ccebd8;
+    border-radius: 24px;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: clamp(28px, 4vw, 44px);
+  }
+
+  #cm-author-home .cm-final h2 {
+    color: var(--cm-ink);
+    font-size: clamp(1.72rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-author-home .cm-final p {
+    color: var(--cm-muted);
+    margin: 12px 0 0;
+    max-width: 680px;
+  }
+
+  #cm-author-home .cm-final-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #cm-author-home .cm-helpful {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    justify-content: center;
+    padding: 22px 10px 0;
+  }
+
+  #cm-author-home .cm-helpful a {
+    color: var(--cm-green-dark);
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  @media (max-width: 1100px) {
+    #cm-author-home .cm-featured-grid,
+    #cm-author-home .cm-goal-grid,
+    #cm-author-home #cm-social-promos .cm-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    #cm-author-home .cm-hero {
+      gap: 26px;
+      grid-template-columns: 1fr;
+    }
+
+    #cm-author-home .cm-hero-brand {
+      min-height: 220px;
+    }
+
+    #cm-author-home .cm-trust-bar {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #cm-author-home .cm-trust-item:nth-child(2) {
+      border-right: 0;
+    }
+
+    #cm-author-home .cm-trust-item:nth-child(-n+2) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    #cm-author-home .cm-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #cm-author-home .cm-final {
+      grid-template-columns: 1fr;
+    }
+
+    #cm-author-home .cm-final-actions {
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 620px) {
+    #cm-author-home {
+      font-size: 15px;
+      width: calc(100vw - 24px);
+    }
+
+    #cm-author-home .cm-hero {
+      border-radius: 18px;
+      padding: 30px 22px;
+    }
+
+    #cm-author-home .cm-hero-brand {
+      min-height: 190px;
+    }
+
+    #cm-author-home .cm-logo-wrap {
+      height: 172px;
+      width: 172px;
+    }
+
+    #cm-author-home .cm-logo-wrap img {
+      height: 126px;
+      width: 126px;
+    }
+
+    #cm-author-home .cm-actions,
+    #cm-author-home .cm-actions .cm-button,
+    #cm-author-home .cm-final-actions,
+    #cm-author-home .cm-final-actions .cm-button {
+      width: 100%;
+    }
+
+    #cm-author-home .cm-trust-bar {
+      grid-template-columns: 1fr;
+      margin: 0 10px;
+    }
+
+    #cm-author-home .cm-trust-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      border-right: 0;
+    }
+
+    #cm-author-home .cm-trust-item:last-child {
+      border-bottom: 0;
+    }
+
+    #cm-author-home .cm-grid,
+    #cm-author-home .cm-featured-grid,
+    #cm-author-home .cm-goal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #cm-author-home .cm-card {
+      min-height: 0;
+    }
+
+    #cm-author-home .cm-category,
+    #cm-author-home .cm-quote,
+    #cm-author-home .cm-final {
+      border-radius: 18px;
+      padding: 28px 22px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #cm-author-home *,
+    #cm-author-home *::before,
+    #cm-author-home *::after {
+      scroll-behavior: auto !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<div id="cm-author-home">
+  <section class="cm-hero" aria-labelledby="cm-author-title">
+    <div>
+      <p class="cm-eyebrow">Affordable book promotion since 2011</p>
+      <h1 id="cm-author-title">Reach More Readers Without Managing Every Platform</h1>
+      <p class="cm-hero-copy">
+        ContentMo promotes books across Facebook Reader Groups, BlueSky, Threads,
+        Pinterest, Instagram, Tumblr, book blogs, and email—so you can focus on writing.
+      </p>
+      <div class="cm-actions">
+        <a class="cm-button cm-button-primary" href="#cm-author-popular">Browse Book Promotions</a>
+        <a class="cm-button cm-button-secondary" href="https://contentmo.com/testimonials">See Author Testimonials</a>
+      </div>
+    </div>
+
+    <div class="cm-hero-brand" aria-label="ContentMo, serving authors and publishers since 2011">
+      <div class="cm-logo-wrap">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/50a45eabe4b000dda4d93c3c/74ce0aae-e567-41f6-81ea-424bda4c3506/bookworm_512x512_transparent_contentmo.png?format=500w"
+          alt="ContentMo"
+          width="156"
+          height="156"
+        >
+      </div>
+      <p class="cm-since">Authors • Publishers • Books</p>
+    </div>
+  </section>
+
+  <div class="cm-trust-bar" aria-label="ContentMo highlights">
+    <div class="cm-trust-item">Promotion options starting free</div>
+    <div class="cm-trust-item">Facebook Reader Group reach</div>
+    <div class="cm-trust-item">Social, blogs, email, and Pinterest</div>
+    <div class="cm-trust-item">Proofreading and custom graphics</div>
+  </div>
+
+  <section class="cm-section" aria-labelledby="cm-goal-title">
+    <div class="cm-section-heading">
+      <h2 id="cm-goal-title">Start With Your Promotion Goal</h2>
+      <p>Choose the result you want, then compare the most relevant ContentMo options.</p>
+    </div>
+
+    <div class="cm-goal-grid">
+      <a class="cm-goal" href="#cm-author-popular">
+        <strong>Get broad exposure</strong>
+        <span>Start with ContentMo’s most popular multi-channel promotions.</span>
+      </a>
+      <a class="cm-goal" href="#cm-social-promos">
+        <strong>Stay visible on social media</strong>
+        <span>Choose daily, one-day, Instagram, or Pinterest promotion.</span>
+      </a>
+      <a class="cm-goal" href="#cm-targeted-promos">
+        <strong>Promote a special offer</strong>
+        <span>Feature a free, 99¢, KU, series, audiobook, or Christian title.</span>
+      </a>
+      <a class="cm-goal" href="#cm-author-services">
+        <strong>Polish your presentation</strong>
+        <span>Explore proofreading, book mockups, and custom images.</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="cm-author-popular" class="cm-section" aria-labelledby="cm-popular-title">
+    <div class="cm-section-heading">
+      <h2 id="cm-popular-title">Most Popular Book Promotions</h2>
+      <p>Strong starting points for authors who want dependable, affordable visibility.</p>
+    </div>
+
+    <div class="cm-grid cm-featured-grid">
+      <a class="cm-card cm-card-featured" href="https://contentmo.com/99-author-promo-super-package">
+        <div class="cm-card-top"><span class="cm-price">$99</span><span class="cm-label">Best Value</span></div>
+        <h3>Author Super Package</h3>
+        <p>A coordinated 30-day campaign across ContentMo’s social, blog, reader-group, and visual-promotion channels.</p>
+        <div class="cm-tags"><span class="cm-tag">30 days</span><span class="cm-tag">Multi-channel</span><span class="cm-tag">Custom image</span></div>
+        <span class="cm-card-link">View the Super Package <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card cm-card-featured" href="https://contentmo.com/facebook-promotions">
+        <div class="cm-card-top"><span class="cm-price">$39</span><span class="cm-label">Big Reach</span></div>
+        <h3>Facebook Reader Groups</h3>
+        <p>Promote your book to a network reaching 250,000+ readers in one day, with added BlueSky and Threads exposure.</p>
+        <div class="cm-tags"><span class="cm-tag">One day</span><span class="cm-tag">Reader groups</span><span class="cm-tag">BlueSky + Threads</span></div>
+        <span class="cm-card-link">View Facebook promotion <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card cm-card-featured" href="https://contentmo.com/blueskythreads-for-33-days">
+        <div class="cm-card-top"><span class="cm-price">$33</span><span class="cm-label">Consistent</span></div>
+        <h3>33 Days of Social Posts</h3>
+        <p>Keep your book visible for 33 days with two daily posts on both BlueSky and Threads.</p>
+        <div class="cm-tags"><span class="cm-tag">33 days</span><span class="cm-tag">132 posts</span><span class="cm-tag">BlueSky + Threads</span></div>
+        <span class="cm-card-link">View the 33-Day plan <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card cm-card-featured" href="https://contentmo.com/botd">
+        <div class="cm-card-top"><span class="cm-price">$29.95</span><span class="cm-label">Featured</span></div>
+        <h3>Book of the Day</h3>
+        <p>Receive a dedicated email and individual blog feature, supported by ContentMo social promotion.</p>
+        <div class="cm-tags"><span class="cm-tag">Email feature</span><span class="cm-tag">Book blog</span><span class="cm-tag">Social exposure</span></div>
+        <span class="cm-card-link">View Book of the Day <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-label="More ContentMo promotion options">
+    <div id="cm-social-promos" class="cm-category">
+      <div class="cm-category-header">
+        <h2>Social Media Promotion</h2>
+        <p>Choose ongoing visibility, a concentrated one-day campaign, or a platform-specific plan.</p>
+      </div>
+
+      <div class="cm-grid">
+        <a class="cm-card" href="https://contentmo.com/-monthly-social-media-promo-plans-new">
+          <div class="cm-card-top"><span class="cm-price">Monthly &amp; Annual</span></div>
+          <h3>Daily Social Media Plans</h3>
+          <p>Keep your book in front of readers every day with recurring ContentMo social promotion.</p>
+          <div class="cm-tags"><span class="cm-tag">Daily posts</span><span class="cm-tag">Recurring visibility</span></div>
+          <span class="cm-card-link">View daily plans <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/social-media-ads-for-authors">
+          <div class="cm-card-top"><span class="cm-price">$19</span></div>
+          <h3>One-Day Social Media Blitz</h3>
+          <p>A custom image, blog feature, and coordinated posts across ContentMo’s social channels.</p>
+          <div class="cm-tags"><span class="cm-tag">One day</span><span class="cm-tag">Custom image</span><span class="cm-tag">Multiple platforms</span></div>
+          <span class="cm-card-link">View the Book Blitz <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/instagram-book-promotions">
+          <div class="cm-card-top"><span class="cm-price">4–16 Weeks</span></div>
+          <h3>Instagram Book Promotion</h3>
+          <p>Build steady Instagram visibility with two promotional posts per week.</p>
+          <div class="cm-tags"><span class="cm-tag">Instagram</span><span class="cm-tag">2 posts weekly</span></div>
+          <span class="cm-card-link">View Instagram plans <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/pinterest-promos">
+          <div class="cm-card-top"><span class="cm-price">$30 / 30 Days</span></div>
+          <h3>Pinterest Book Promotion</h3>
+          <p>Give your book long-lasting visual discovery through ContentMo’s established Pinterest boards.</p>
+          <div class="cm-tags"><span class="cm-tag">Pinterest</span><span class="cm-tag">30 days</span></div>
+          <span class="cm-card-link">View Pinterest promotion <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+
+    <div id="cm-targeted-promos" class="cm-category">
+      <div class="cm-category-header">
+        <h2>Targeted Book Promotions</h2>
+        <p>Match your campaign to the book’s format, price, series, or audience.</p>
+      </div>
+
+      <div class="cm-grid">
+        <a class="cm-card" href="https://contentmo.com/kindleunlimitedpromo">
+          <div class="cm-card-top"><span class="cm-price">$2 / Day</span></div>
+          <h3>Kindle Unlimited Promotion</h3>
+          <p>Daily social visibility plus recurring blog, Pinterest, and Facebook exposure for KU books.</p>
+          <div class="cm-tags"><span class="cm-tag">Kindle Unlimited</span><span class="cm-tag">Daily social</span></div>
+          <span class="cm-card-link">View KU promotion <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/99-book-promo">
+          <div class="cm-card-top"><span class="cm-price">7 Days</span></div>
+          <h3>99¢ Book Promotion</h3>
+          <p>Support your 99¢ Kindle deal with seven days of coordinated social promotion.</p>
+          <div class="cm-tags"><span class="cm-tag">99¢ books</span><span class="cm-tag">7 days</span></div>
+          <span class="cm-card-link">View the 99¢ promotion <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/submit-your-free-ebook-promo">
+          <div class="cm-card-top"><span class="cm-price">Free or $5.99 Boost</span></div>
+          <h3>Free eBook Promotion</h3>
+          <p>Submit a free Kindle book at no cost or add a one-day promotional boost for extra reach.</p>
+          <div class="cm-tags"><span class="cm-tag">Free books</span><span class="cm-tag">Optional upgrade</span></div>
+          <span class="cm-card-link">Submit a free eBook <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/book-series-promotion-packages">
+          <div class="cm-card-top"><span class="cm-price">$16.99 / Week</span></div>
+          <h3>Book Series Promotion</h3>
+          <p>Promote several connected titles through a coordinated package designed for book series.</p>
+          <div class="cm-tags"><span class="cm-tag">Book series</span><span class="cm-tag">Multiple titles</span></div>
+          <span class="cm-card-link">View series promotion <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/audiobook-promos-for-authors">
+          <div class="cm-card-top"><span class="cm-price">From $29.99</span></div>
+          <h3>Audiobook Promotion</h3>
+          <p>Reach listeners with recurring social, reader-group, Pinterest, and custom-image promotion.</p>
+          <div class="cm-tags"><span class="cm-tag">Audiobooks</span><span class="cm-tag">Custom image</span></div>
+          <span class="cm-card-link">View audiobook promotion <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/christian-authors-book-promos">
+          <div class="cm-card-top"><span class="cm-price">$25</span></div>
+          <h3>Christian Book Promotion</h3>
+          <p>Feature Christian fiction or nonfiction through ContentMo’s targeted Christian-book channels.</p>
+          <div class="cm-tags"><span class="cm-tag">Christian readers</span><span class="cm-tag">Fiction + nonfiction</span></div>
+          <span class="cm-card-link">View Christian promotion <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+
+    <div id="cm-author-services" class="cm-category">
+      <div class="cm-category-header">
+        <h2>Author Services and Visuals</h2>
+        <p>Prepare your book for readers and give your promotion a professional presentation.</p>
+      </div>
+
+      <div class="cm-grid">
+        <a class="cm-card" href="https://contentmo.com/proofreading">
+          <div class="cm-card-top"><span class="cm-price">$15 / 1,000 Words</span></div>
+          <h3>Professional Proofreading</h3>
+          <p>Clean up typos, punctuation mistakes, repeated words, and distracting errors before readers see your book.</p>
+          <div class="cm-tags"><span class="cm-tag">Reader-ready</span><span class="cm-tag">Affordable pricing</span></div>
+          <span class="cm-card-link">View proofreading prices <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/book-mockup-products">
+          <div class="cm-card-top"><span class="cm-price">From $5</span></div>
+          <h3>Custom Book Mockups</h3>
+          <p>Showcase your genuine cover in a polished device, paperback, or multi-format mockup.</p>
+          <div class="cm-tags"><span class="cm-tag">Your cover</span><span class="cm-tag">Promotional visual</span></div>
+          <span class="cm-card-link">Browse book mockups <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="cm-card" href="https://contentmo.com/add-on-gallery-grid">
+          <div class="cm-card-top"><span class="cm-price">$16</span></div>
+          <h3>Custom Book Images</h3>
+          <p>Order a custom promotional image designed around your real book cover and marketing details.</p>
+          <div class="cm-tags"><span class="cm-tag">Custom design</span><span class="cm-tag">Real book cover</span></div>
+          <span class="cm-card-link">View custom images <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-label="Author testimonial">
+    <div class="cm-quote">
+      <div class="cm-quote-mark" aria-hidden="true">“</div>
+      <blockquote>
+        ContentMo is at the top of my promotions list because I always see a spike in sales
+        when I run one of their promotions. The cherry on my happy sundae with them is that
+        their prices are better than a lot of other promotion sites with the same or less effectiveness.
+      </blockquote>
+      <cite>— Lucy Monroe, USA Today Bestselling Author</cite>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-labelledby="cm-final-title">
+    <div class="cm-final">
+      <div>
+        <h2 id="cm-final-title">Not Sure Which Promotion Fits?</h2>
+        <p>Compare every current option on one page, or see what other authors say about working with ContentMo.</p>
+      </div>
+      <div class="cm-final-actions">
+        <a class="cm-button cm-button-primary" href="https://contentmo.com/all-contentmo-promos">Compare All Promotions</a>
+        <a class="cm-button cm-button-secondary" href="https://contentmo.com/testimonials">Read Testimonials</a>
+      </div>
+    </div>
+
+    <nav class="cm-helpful" aria-label="Helpful ContentMo links">
+      <a href="https://contentmo.com/faq">FAQs</a>
+      <a href="https://contentmo.com/contentmo-policy-page">Policies &amp; Terms</a>
+      <a href="https://contentmo.com/about-contentmo">About ContentMo</a>
+      <a href="https://contentmo.com/writers-tshirt-shop">Writers’ T-Shirt Shop</a>
+    </nav>
+  </section>
+</div>

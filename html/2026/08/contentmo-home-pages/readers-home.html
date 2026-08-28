@@ -1,0 +1,581 @@
+<!--
+  ContentMo Reader Home redesign
+  Paste this entire file into a Squarespace Code Block.
+  All styling is scoped to #cm-reader-home so it will not change other pages.
+-->
+
+<style>
+  #cm-reader-home {
+    --cm-green: #20a95b;
+    --cm-green-dark: #11733c;
+    --cm-green-soft: #eaf8f0;
+    --cm-ink: #202823;
+    --cm-muted: #5c6961;
+    --cm-line: #dce6df;
+    --cm-paper: #ffffff;
+    --cm-warm: #f7f5ef;
+    --cm-charcoal: #202521;
+    color: var(--cm-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 1180px;
+    width: 100%;
+  }
+
+  #cm-reader-home,
+  #cm-reader-home * {
+    box-sizing: border-box;
+  }
+
+  #cm-reader-home a {
+    color: inherit;
+  }
+
+  #cm-reader-home .cm-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 90% 15%, rgba(255, 255, 255, 0.72) 0 14%, transparent 15%),
+      linear-gradient(135deg, #edf9f1 0%, #f8f6ef 58%, #eef8f2 100%);
+    border: 1px solid var(--cm-line);
+    border-radius: 26px;
+    display: grid;
+    gap: 42px;
+    grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.75fr);
+    overflow: hidden;
+    padding: clamp(34px, 6vw, 72px);
+    position: relative;
+  }
+
+  #cm-reader-home .cm-eyebrow {
+    color: var(--cm-green-dark);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+
+  #cm-reader-home h1,
+  #cm-reader-home h2,
+  #cm-reader-home h3,
+  #cm-reader-home p {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #cm-reader-home h1 {
+    color: var(--cm-ink);
+    font-size: clamp(2.35rem, 5.2vw, 4.6rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 760px;
+    text-transform: none;
+  }
+
+  #cm-reader-home .cm-hero-copy {
+    color: var(--cm-muted);
+    font-size: clamp(1.05rem, 2vw, 1.28rem);
+    margin: 22px 0 0;
+    max-width: 710px;
+  }
+
+  #cm-reader-home .cm-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  #cm-reader-home .cm-button {
+    align-items: center;
+    border: 2px solid var(--cm-green-dark);
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 0.96rem;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 50px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+
+  #cm-reader-home .cm-button-primary {
+    background: var(--cm-green-dark);
+    color: #ffffff;
+  }
+
+  #cm-reader-home .cm-button-secondary {
+    background: rgba(255, 255, 255, 0.86);
+    color: var(--cm-green-dark);
+  }
+
+  #cm-reader-home .cm-button:hover {
+    transform: translateY(-2px);
+  }
+
+  #cm-reader-home .cm-button-primary:hover {
+    background: #0c5f31;
+    border-color: #0c5f31;
+  }
+
+  #cm-reader-home .cm-button-secondary:hover {
+    background: #ffffff;
+  }
+
+  #cm-reader-home a:focus-visible {
+    outline: 3px solid #f4b942;
+    outline-offset: 4px;
+  }
+
+  #cm-reader-home .cm-hero-brand {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 270px;
+    position: relative;
+  }
+
+  #cm-reader-home .cm-logo-wrap {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--cm-line);
+    border-radius: 50%;
+    box-shadow: 0 18px 45px rgba(29, 67, 43, 0.13);
+    display: flex;
+    height: 210px;
+    justify-content: center;
+    width: 210px;
+  }
+
+  #cm-reader-home .cm-logo-wrap img {
+    display: block;
+    height: 156px;
+    object-fit: contain;
+    width: 156px;
+  }
+
+  #cm-reader-home .cm-since {
+    background: var(--cm-charcoal);
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    margin: -15px 0 0;
+    padding: 9px 16px;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  #cm-reader-home .cm-section {
+    padding: clamp(58px, 8vw, 92px) clamp(4px, 1.2vw, 14px) 0;
+  }
+
+  #cm-reader-home .cm-section-heading {
+    margin: 0 auto 32px;
+    max-width: 720px;
+    text-align: center;
+  }
+
+  #cm-reader-home .cm-section-heading h2 {
+    color: var(--cm-ink);
+    font-size: clamp(1.75rem, 3.4vw, 2.55rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-reader-home .cm-section-heading p {
+    color: var(--cm-muted);
+    font-size: 1.02rem;
+    margin: 12px auto 0;
+    max-width: 630px;
+  }
+
+  #cm-reader-home .cm-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #cm-reader-home .cm-card {
+    background: var(--cm-paper);
+    border: 1px solid var(--cm-line);
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(28, 59, 39, 0.07);
+    display: flex;
+    flex-direction: column;
+    min-height: 270px;
+    padding: 28px;
+    text-decoration: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  #cm-reader-home .cm-card:hover {
+    border-color: #a7cdb5;
+    box-shadow: 0 14px 34px rgba(28, 59, 39, 0.12);
+    transform: translateY(-4px);
+  }
+
+  #cm-reader-home .cm-card-mark {
+    align-items: center;
+    background: var(--cm-green-soft);
+    border: 1px solid #ccebd8;
+    border-radius: 12px;
+    color: var(--cm-green-dark);
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 900;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: 0.035em;
+    margin-bottom: 22px;
+    min-width: 48px;
+    padding: 0 12px;
+    width: fit-content;
+  }
+
+  #cm-reader-home .cm-card h3 {
+    color: var(--cm-ink);
+    font-size: 1.33rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-reader-home .cm-card p {
+    color: var(--cm-muted);
+    font-size: 0.96rem;
+    margin: 12px 0 22px;
+  }
+
+  #cm-reader-home .cm-card-link {
+    color: var(--cm-green-dark);
+    font-size: 0.92rem;
+    font-weight: 800;
+    margin-top: auto;
+  }
+
+  #cm-reader-home .cm-card-link span {
+    display: inline-block;
+    margin-left: 4px;
+    transition: transform 160ms ease;
+  }
+
+  #cm-reader-home .cm-card:hover .cm-card-link span {
+    transform: translateX(4px);
+  }
+
+  #cm-reader-home .cm-more-wrap {
+    background: var(--cm-warm);
+    border: 1px solid #e9e4d8;
+    border-radius: 22px;
+    padding: clamp(28px, 5vw, 48px);
+  }
+
+  #cm-reader-home .cm-more-wrap .cm-section-heading {
+    margin-bottom: 26px;
+  }
+
+  #cm-reader-home .cm-compact-card {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #e2ddd2;
+    border-radius: 14px;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 800;
+    justify-content: space-between;
+    min-height: 74px;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: border-color 160ms ease, transform 160ms ease;
+  }
+
+  #cm-reader-home .cm-compact-card:hover {
+    border-color: #a7cdb5;
+    transform: translateY(-2px);
+  }
+
+  #cm-reader-home .cm-compact-card span:last-child {
+    color: var(--cm-green-dark);
+    font-size: 1.2rem;
+    margin-left: 12px;
+  }
+
+  #cm-reader-home .cm-newsletter {
+    align-items: center;
+    background: var(--cm-charcoal);
+    border-radius: 24px;
+    color: #ffffff;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: clamp(32px, 6vw, 58px);
+  }
+
+  #cm-reader-home .cm-newsletter h2 {
+    color: #ffffff;
+    font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: none;
+  }
+
+  #cm-reader-home .cm-newsletter p {
+    color: #dce5df;
+    margin: 12px 0 0;
+    max-width: 680px;
+  }
+
+  #cm-reader-home .cm-newsletter .cm-button {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--cm-green-dark);
+    white-space: nowrap;
+  }
+
+  #cm-reader-home .cm-newsletter .cm-button:hover {
+    background: var(--cm-green-soft);
+    border-color: var(--cm-green-soft);
+  }
+
+  #cm-reader-home .cm-reader-note {
+    color: var(--cm-muted);
+    font-size: 0.91rem;
+    margin: 24px auto 0;
+    text-align: center;
+  }
+
+  #cm-reader-home .cm-reader-note a {
+    color: var(--cm-green-dark);
+    font-weight: 800;
+  }
+
+  @media (max-width: 900px) {
+    #cm-reader-home .cm-hero {
+      gap: 26px;
+      grid-template-columns: 1fr;
+    }
+
+    #cm-reader-home .cm-hero-brand {
+      min-height: 220px;
+    }
+
+    #cm-reader-home .cm-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #cm-reader-home .cm-newsletter {
+      grid-template-columns: 1fr;
+    }
+
+    #cm-reader-home .cm-newsletter .cm-button {
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 620px) {
+    #cm-reader-home {
+      font-size: 15px;
+    }
+
+    #cm-reader-home .cm-hero {
+      border-radius: 18px;
+      padding: 30px 22px;
+    }
+
+    #cm-reader-home .cm-hero-brand {
+      min-height: 190px;
+    }
+
+    #cm-reader-home .cm-logo-wrap {
+      height: 172px;
+      width: 172px;
+    }
+
+    #cm-reader-home .cm-logo-wrap img {
+      height: 126px;
+      width: 126px;
+    }
+
+    #cm-reader-home .cm-actions,
+    #cm-reader-home .cm-actions .cm-button {
+      width: 100%;
+    }
+
+    #cm-reader-home .cm-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #cm-reader-home .cm-card {
+      min-height: 0;
+    }
+
+    #cm-reader-home .cm-more-wrap,
+    #cm-reader-home .cm-newsletter {
+      border-radius: 18px;
+      padding: 28px 22px;
+    }
+
+    #cm-reader-home .cm-newsletter .cm-button {
+      justify-self: stretch;
+      white-space: normal;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #cm-reader-home *,
+    #cm-reader-home *::before,
+    #cm-reader-home *::after {
+      scroll-behavior: auto !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<div id="cm-reader-home">
+  <section class="cm-hero" aria-labelledby="cm-reader-title">
+    <div>
+      <p class="cm-eyebrow">Free and affordable books for readers</p>
+      <h1 id="cm-reader-title">Find Your Next Great Read</h1>
+      <p class="cm-hero-copy">
+        Browse free Kindle books, 99¢ deals, Kindle Unlimited favorites, audiobooks,
+        and more—updated regularly by ContentMo.
+      </p>
+      <div class="cm-actions">
+        <a class="cm-button cm-button-primary" href="https://contentmo.com/our-latest-book-postings">
+          See the Latest Book Posts
+        </a>
+        <a class="cm-button cm-button-secondary" href="https://contentmo.com/newsletter-sign-up">
+          Join the Free Newsletter
+        </a>
+      </div>
+    </div>
+
+    <div class="cm-hero-brand" aria-label="ContentMo, serving the book community since 2011">
+      <div class="cm-logo-wrap">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/50a45eabe4b000dda4d93c3c/74ce0aae-e567-41f6-81ea-424bda4c3506/bookworm_512x512_transparent_contentmo.png?format=500w"
+          alt="ContentMo"
+          width="156"
+          height="156"
+        >
+      </div>
+      <p class="cm-since">Serving readers since 2011</p>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-labelledby="cm-popular-title">
+    <div class="cm-section-heading">
+      <h2 id="cm-popular-title">Popular Book Deals</h2>
+      <p>Start with the book collections ContentMo readers visit most.</p>
+    </div>
+
+    <div class="cm-grid">
+      <a class="cm-card" href="https://contentmo.com/ebooks-blog">
+        <span class="cm-card-mark" aria-hidden="true">FREE</span>
+        <h3>Free Kindle Books</h3>
+        <p>Discover free Kindle eBooks and regularly updated free-book roundups.</p>
+        <span class="cm-card-link">Browse free books <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card" href="https://contentmo.com/ku-blog">
+        <span class="cm-card-mark" aria-hidden="true">KU</span>
+        <h3>Kindle Unlimited Books</h3>
+        <p>Find featured reads available to Kindle Unlimited subscribers.</p>
+        <span class="cm-card-link">Browse KU books <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card" href="https://contentmo.com/99-amazon-kindle-book-deals">
+        <span class="cm-card-mark" aria-hidden="true">99¢</span>
+        <h3>99¢ Kindle Deals</h3>
+        <p>Stock your Kindle with affordable reads priced at just 99¢.</p>
+        <span class="cm-card-link">Browse 99¢ deals <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-labelledby="cm-collections-title">
+    <div class="cm-section-heading">
+      <h2 id="cm-collections-title">More Book Collections</h2>
+      <p>Explore featured books, listening choices, and inspirational reads.</p>
+    </div>
+
+    <div class="cm-grid">
+      <a class="cm-card" href="https://contentmo.com/featured-contentmo-ebooks">
+        <span class="cm-card-mark" aria-hidden="true">★</span>
+        <h3>Featured Books</h3>
+        <p>Meet promoted authors and discover books selected for extra attention.</p>
+        <span class="cm-card-link">See featured books <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card" href="https://contentmo.com/audiobook-deals">
+        <span class="cm-card-mark" aria-hidden="true">AUDIO</span>
+        <h3>Audiobook Deals</h3>
+        <p>Find audiobooks, Audible offers, and stories ready for listening.</p>
+        <span class="cm-card-link">Browse audiobooks <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="cm-card" href="https://contentmo.com/christian-ebooks">
+        <span class="cm-card-mark" aria-hidden="true">FAITH</span>
+        <h3>Christian Books</h3>
+        <p>Explore Christian fiction, nonfiction, devotionals, and inspirational books.</p>
+        <span class="cm-card-link">Browse Christian books <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-labelledby="cm-explore-title">
+    <div class="cm-more-wrap">
+      <div class="cm-section-heading">
+        <h2 id="cm-explore-title">More to Explore</h2>
+        <p>Visit these additional ContentMo reader collections.</p>
+      </div>
+
+      <div class="cm-grid">
+        <a class="cm-compact-card" href="https://contentmo.com/contentmo-childrens-book-blog">
+          <span>Children’s Books</span><span aria-hidden="true">→</span>
+        </a>
+        <a class="cm-compact-card" href="https://contentmo.com/coloring-book-blog">
+          <span>Coloring Books</span><span aria-hidden="true">→</span>
+        </a>
+        <a class="cm-compact-card" href="https://contentmo.com/jigsaw-puzzles">
+          <span>Jigsaw Puzzles</span><span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cm-section" aria-labelledby="cm-newsletter-title">
+    <div class="cm-newsletter">
+      <div>
+        <h2 id="cm-newsletter-title">Let the Book Deals Come to You</h2>
+        <p>
+          Join the free ContentMo newsletter for featured books, Kindle deals,
+          and new reading discoveries.
+        </p>
+      </div>
+      <a class="cm-button" href="https://contentmo.com/newsletter-sign-up">
+        Sign Up Free
+      </a>
+    </div>
+
+    <p class="cm-reader-note">
+      Are you an author? Visit
+      <a href="https://contentmo.com/-home-authors">ContentMo’s Author Home</a>
+      for affordable book-promotion options.
+    </p>
+  </section>
+</div>
