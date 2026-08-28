@@ -1,0 +1,257 @@
+<!-- ContentMo Proofreading Calculator + PayPal Checkout -->
+<form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="max-width:900px;margin:0 auto;padding:20px;border:1px solid #ddd;border-radius:14px;background:#fff;box-sizing:border-box;">
+
+  <!-- PayPal fields -->
+  <input type="hidden" name="cmd" value="_cart">
+  <input type="hidden" name="add" value="1">
+  <input type="hidden" name="business" value="agfmoproducts@gmail.com">
+  <input type="hidden" name="currency_code" value="USD">
+  <input type="hidden" name="item_name" id="item_name" value="Proofreading Service">
+  <input type="hidden" name="amount" id="paypal_amount" value="0.00">
+  <input type="hidden" name="quantity" value="1">
+
+  <!-- PayPal return -->
+  <input type="hidden" name="return" value="https://contentmo.com/proofreading-upload">
+  <input type="hidden" name="rm" value="2">
+
+  <!-- Order details -->
+  <input type="hidden" name="on0" value="Turnaround">
+  <input type="hidden" name="os0" id="paypal_turnaround">
+  <input type="hidden" name="on1" value="Word Count">
+  <input type="hidden" name="os1" id="paypal_words">
+  <input type="hidden" name="on2" value="Title">
+  <input type="hidden" name="os2" id="paypal_title">
+  <input type="hidden" name="custom" id="paypal_custom">
+
+  <h2 style="margin:0 0 8px;font-size:30px;line-height:1.2;">Proofreading Price Calculator</h2>
+
+  <div style="margin-bottom:20px;padding:14px;border:1px solid #eee;border-radius:12px;background:#fafafa;line-height:1.7;">
+    <strong>How It Works</strong><br>
+    1️⃣ Enter manuscript details and calculate your quote<br>
+    2️⃣ Complete secure payment<br>
+    3️⃣ Upload your manuscript after checkout
+    <div style="margin-top:10px;font-size:13px;color:#444;">
+      <strong>NOTE:</strong> To checkout as a guest (no PayPal account needed): <strong>UNCHECK “Save info &amp; create your PayPal account”</strong> if that option appears to continue checkout as a guest. To use PayPal: sign in to your PayPal account when prompted.
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+    <div style="min-width:0;">
+
+      <label for="manuscriptTitle" style="display:block;margin-bottom:6px;font-size:14px;">Manuscript Title</label>
+      <input id="manuscriptTitle" type="text" placeholder="Optional title" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+
+      <label for="buyerEmail" style="display:block;margin-top:12px;margin-bottom:6px;font-size:14px;">Your Email</label>
+      <input id="buyerEmail" type="email" placeholder="you@example.com" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+
+      <label for="wordCount" style="display:block;margin-top:12px;margin-bottom:6px;font-size:14px;">Word Count</label>
+      <input id="wordCount" type="number" min="0" step="1" placeholder="70000" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+
+      <label for="turnaround" style="display:block;margin-top:12px;margin-bottom:6px;font-size:14px;">Turnaround</label>
+      <select id="turnaround" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+        <option value="1.00" data-days="30">30 Days</option>
+        <option value="1.20" data-days="14">14 Days</option>
+        <option value="1.40" data-days="7">7 Days</option>
+      </select>
+
+      <label for="notes" style="display:block;margin-top:12px;margin-bottom:6px;font-size:14px;">Notes</label>
+      <textarea id="notes" rows="4" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;resize:vertical;"></textarea>
+
+      <div style="margin-top:12px;padding:12px;border:1px solid #eee;border-radius:10px;background:#fafafa;">
+        <label style="display:flex;gap:8px;align-items:flex-start;line-height:1.45;cursor:pointer;">
+          <input id="acknowledgeBox" type="checkbox" style="margin-top:3px;">
+          <span style="font-size:13px;">I understand proofreading corrects grammar, spelling, punctuation, and similar issues, but is not the same as editing, line editing, or developmental editing.</span>
+        </label>
+      </div>
+
+    </div>
+
+    <div style="min-width:0;">
+
+      <div style="padding:16px;border:1px dashed #ccc;border-radius:10px;background:#fafafa;">
+        <strong>Your Quote</strong>
+
+        <div id="quoteSummary" style="margin-top:10px;font-size:14px;line-height:1.6;">
+          Enter your manuscript details to calculate price.
+        </div>
+
+        <div style="margin-top:12px;font-size:28px;font-weight:bold;">
+          $<span id="price">0.00</span>
+        </div>
+
+        <div style="font-size:13px;color:#555;">
+          Effective rate: $<span id="effectiveRate">0.0000</span> / word
+        </div>
+
+        <div id="discountMessage" style="margin-top:6px;font-size:13px;color:green;"></div>
+        <div id="completionDate" style="font-size:13px;margin-top:6px;color:#333;"></div>
+      </div>
+
+      <div style="margin-top:16px;padding:16px;border:1px solid #eee;border-radius:12px;">
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Checkout</div>
+
+        <div id="readyMessage" style="font-size:13px;color:#555;margin-bottom:12px;">
+          Enter your details to enable checkout.
+        </div>
+
+        <button id="cartButton" type="submit" style="padding:12px 18px;background:#111;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
+          Checkout with PayPal or as a Guest
+        </button>
+
+        <div style="margin-top:10px;font-size:12px;color:#666;line-height:1.6;">
+          After payment you will automatically be redirected to upload your manuscript.
+        </div>
+
+        <div id="formWarning" style="margin-top:10px;color:red;font-size:12px;"></div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<script>
+(() => {
+  const baseRate = 0.0264;
+  const discountThreshold = 20000;
+  const discountPercent = 15;
+
+  const wordCount = document.getElementById("wordCount");
+  const turnaround = document.getElementById("turnaround");
+  const manuscriptTitle = document.getElementById("manuscriptTitle");
+  const buyerEmail = document.getElementById("buyerEmail");
+  const notes = document.getElementById("notes");
+  const acknowledgeBox = document.getElementById("acknowledgeBox");
+
+  const price = document.getElementById("price");
+  const effectiveRate = document.getElementById("effectiveRate");
+  const quoteSummary = document.getElementById("quoteSummary");
+  const discountMessage = document.getElementById("discountMessage");
+  const completionDate = document.getElementById("completionDate");
+  const readyMessage = document.getElementById("readyMessage");
+  const formWarning = document.getElementById("formWarning");
+  const cartButton = document.getElementById("cartButton");
+
+  const paypalAmount = document.getElementById("paypal_amount");
+  const paypalTurnaround = document.getElementById("paypal_turnaround");
+  const paypalWords = document.getElementById("paypal_words");
+  const paypalTitle = document.getElementById("paypal_title");
+  const paypalCustom = document.getElementById("paypal_custom");
+
+  function calcDate(days) {
+    const d = new Date();
+    d.setDate(d.getDate() + days);
+    return d.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function calculate() {
+    const words = parseInt(wordCount.value, 10) || 0;
+    const multiplier = parseFloat(turnaround.value) || 1;
+    const days = parseInt(turnaround.options[turnaround.selectedIndex].dataset.days, 10) || 30;
+    const label = turnaround.options[turnaround.selectedIndex].text;
+    const title = manuscriptTitle.value.trim();
+    const email = buyerEmail.value.trim();
+
+    let subtotal = words * baseRate * multiplier;
+    let discount = 0;
+
+    if (words >= discountThreshold) {
+      discount = subtotal * (discountPercent / 100);
+    }
+
+    const total = subtotal - discount;
+
+    price.textContent = total.toFixed(2);
+    effectiveRate.textContent = (words ? total / words : 0).toFixed(4);
+
+    paypalAmount.value = total.toFixed(2);
+    paypalTurnaround.value = label;
+    paypalWords.value = words;
+    paypalTitle.value = title || "Untitled";
+
+    const customText = [
+      "Proofreading",
+      words + " words",
+      label,
+      email,
+      notes.value.trim()
+    ].filter(Boolean).join(" | ");
+
+    paypalCustom.value = customText.length > 250 ? customText.slice(0, 250) : customText;
+
+    if (words > 0) {
+      quoteSummary.innerHTML =
+        (title ? "<strong>Title:</strong> " + escapeHtml(title) + "<br>" : "") +
+        "<strong>Word Count:</strong> " + words.toLocaleString() + "<br>" +
+        "<strong>Turnaround:</strong> " + escapeHtml(label) + "<br>" +
+        "<strong>Subtotal:</strong> $" + subtotal.toFixed(2) +
+        (discount > 0 ? "<br><strong>Discount:</strong> -$" + discount.toFixed(2) : "");
+    } else {
+      quoteSummary.innerHTML = "Enter your manuscript details to calculate price.";
+    }
+
+    discountMessage.textContent = discount > 0 ? "Volume discount applied (15%)" : "";
+    completionDate.textContent = words > 0 ? "Estimated completion: " + calcDate(days) : "";
+
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (words > 0 && total > 0 && validEmail && acknowledgeBox.checked) {
+      readyMessage.textContent = "Ready to check out. After payment, you will be redirected to upload your manuscript.";
+      cartButton.disabled = false;
+      cartButton.style.opacity = "1";
+      cartButton.style.cursor = "pointer";
+    } else {
+      readyMessage.textContent = "Enter your details to enable checkout.";
+      cartButton.disabled = true;
+      cartButton.style.opacity = "0.6";
+      cartButton.style.cursor = "not-allowed";
+    }
+
+    formWarning.textContent = "";
+  }
+
+  wordCount.addEventListener("input", calculate);
+  turnaround.addEventListener("change", calculate);
+  manuscriptTitle.addEventListener("input", calculate);
+  buyerEmail.addEventListener("input", calculate);
+  notes.addEventListener("input", calculate);
+  acknowledgeBox.addEventListener("change", calculate);
+
+  document.getElementById("paypalForm").addEventListener("submit", function (e) {
+    const words = parseInt(wordCount.value, 10) || 0;
+    const email = buyerEmail.value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      e.preventDefault();
+      formWarning.textContent = "Please enter a valid email address.";
+      return;
+    }
+
+    if (words <= 0) {
+      e.preventDefault();
+      formWarning.textContent = "Enter a valid word count.";
+      return;
+    }
+
+    if (!acknowledgeBox.checked) {
+      e.preventDefault();
+      formWarning.textContent = "Please confirm the proofreading acknowledgement.";
+      return;
+    }
+  });
+
+  calculate();
+})();
+</script>
